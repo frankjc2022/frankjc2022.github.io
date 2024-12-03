@@ -1,1 +1,288 @@
-<h1>Hello world!</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Static Head Avatar's Project Page</title>
+    <link href="./css/bootstrap-4.4.1.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+      .subtitle {
+        color: grey;
+        padding: 10px 0;
+        "
+
+      }
+
+      .slider-container {
+        position: relative;
+        width: 100%;
+        height: 400px;
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        margin-bottom: 20px;
+      }
+
+      .slider-container img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .before {
+        clip-path: inset(0 50% 0 0);
+        z-index: 1;
+      }
+
+      .before-label,
+      .after-label {
+        position: absolute;
+        top: 10px;
+        padding: 5px 10px;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        font-size: 14px;
+        border-radius: 8px;
+        z-index: 3;
+      }
+
+      .before-label {
+        left: 10px;
+      }
+
+      .after-label {
+        right: 10px;
+      }
+
+      .handle {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 3px;
+        height: 100%;
+        background-color: #fff;
+        cursor: ew-resize;
+        z-index: 2;
+        box-shadow: 3px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .handle::before,
+      .handle::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 3;
+      }
+
+      .handle::before {
+        content: '\25C0';
+        left: -24px;
+        font-size: 24px;
+        color: white;
+        text-shadow: 0 0px 3px rgba(0, 0, 0, 0.8);
+      }
+
+      .handle::after {
+        content: '\25B6';
+        right: -24px;
+        font-size: 24px;
+        color: white;
+        text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.8);
+      }
+    </style>
+  </head>
+  <!-- cover -->
+  <section>
+    <div class="jumbotron text-center mt-0">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h2 class="text-center">High-Quality Static Head Avatars with</h2>
+            <h2 class="text-center">Gaussian Splatting</h2>
+            <hr>
+            <h6 class="text-center">
+              <a href="https://frankjc2022.github.io/">Jiepeng (Frank) Chen</a>
+            </h6>
+            <p class="text-center">University of Toronto</p>
+            <div class="row justify-content-center">
+              <div class="column">
+                <p class="mb-5">
+                  <a class="btn btn-large btn-light" href="./assets/static_head_avatar.pdf" role="button" target="_blank">
+                    <i class="fa fa-file"></i> Paper </a>
+                </p>
+              </div>
+              <div class="column">
+                <p class="mb-5">
+                  <a class="btn btn-large btn-light" href="https://github.com/frankjc2022/static-head-avatar" role="button" target="_blank">
+                    <i class="fa fa-github"></i> Code </a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- abstract -->
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h3>Abstract</h3>
+          <p class="text-left"> Static 3D head avatars are essential for augmented reality (AR), virtual reality (VR), and gaming applications, yet achieving high fidelity and efficient initialization under lightweight setups remains challenging. Gaussian Splatting has proven effective for general scene representation, but it struggles with robust initialization and fidelity when modeling smooth human head geometries. To address these challenges, we propose a hybrid approach that combines random point initialization guided by head avatar masks with iterative point refinement through addition and pruning, thereby eliminating reliance on Structure-from-Motion (SfM). For rendering, we enhance Gaussian Splatting by integrating a fully connected neural network inspired by NeRF to predict Gaussian attributes such as color and opacity from encoded spatial features. This integration achieves smoother transitions and slight improvements in rendering fidelity, addressing some of the known limitations. Experiments on the RenderMe-360 dataset demonstrate that our approach provides modest but meaningful advancements in quality and efficiency for lightweight static head avatar modeling and novel view synthesis. </p>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+  <!-- nvs -->
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h3>Novel View Synthesis</h3>
+          <h6 class="subtitle">SfM + Color Opacity Prediction</h6>
+          <video width="100%" playsinline="" autoplay="autoplay" loop="loop" preload="" muted="">
+            <source src="./assets/videos/sfm_mlp.mp4" type="video/mp4">
+          </video>
+          <h6 class="subtitle">Random Initialization + Color Opacity Prediction</h6>
+          <video width="100%" playsinline="" autoplay="autoplay" loop="loop" preload="" muted="">
+            <source src="./assets/videos/random_mlp.mp4" type="video/mp4">
+          </video>
+          <hr>
+        </div>
+      </div>
+      <!-- method -->
+      <div class="row">
+        <div class="col-12 text-center">
+          <h3>Method</h3>
+          <img src="./assets/images/architecture.png" width="1080" alt="">
+          <p class="text-left" style="padding-top: 30px;"> Our method replaces the point cloud initialization step in 3D Gaussian Splatting (3DGS) with a random sampling strategy, refining points iteratively using image masks to ensure comprehensive coverage of the head geometry. The resulting point cloud retains the same structure as the original 3DGS pipeline. Additionally, we replace the spherical harmonic (SH) representation for predicting color and opacity with a fully connected neural network. This network operates in two stages: the first stage uses hash-encoded Gaussian positions along with rotation and scale attributes to predict opacity and a feature vector, while the second stage combines this feature vector with the camera viewing direction to predict RGB color. </p>
+          <p>&nbsp;</p>
+          <hr>
+        </div>
+      </div>
+      <!-- results -->
+      <div class="row">
+        <div class="col-12 text-center">
+          <h3>Results</h3>
+          <h6 class="subtitle">Unseen Views</h6>
+          <div class="row justify-content-center">
+            <div class="col-md-6">
+              <div class="slider-container">
+                <img src="./assets/images/0116_3dgs.png" class="before">
+                <div class="before-label">3DGS</div>
+                <img src="./assets/images/0116_sfm_mlp.png" class="after">
+                <div class="after-label">SfM + Color Opacity Prediction</div>
+                <div class="handle"></div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="slider-container">
+                <img src="./assets/images/0116_3dgs.png" class="before">
+                <div class="before-label">3DGS</div>
+                <img src="./assets/images/0116_random_mlp.png" class="after">
+                <div class="after-label">Random + Color Opacity Prediction</div>
+                <div class="handle"></div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="slider-container">
+                <img src="./assets/images/0175_3dgs.png" class="before">
+                <div class="before-label">3DGS</div>
+                <img src="./assets/images/0175_sfm_mlp.png" class="after">
+                <div class="after-label">SfM + Color Opacity Prediction</div>
+                <div class="handle"></div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="slider-container">
+                <img src="./assets/images/0175_3dgs.png" class="before">
+                <div class="before-label">3DGS</div>
+                <img src="./assets/images/0175_random_mlp.png" class="after">
+                <div class="after-label">Random + Color Opacity Prediction</div>
+                <div class="handle"></div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="slider-container">
+                <img src="./assets/images/0195_3dgs.png" class="before">
+                <div class="before-label">3DGS</div>
+                <img src="./assets/images/0195_sfm_mlp.png" class="after">
+                <div class="after-label">SfM + Color Opacity Prediction</div>
+                <div class="handle"></div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="slider-container">
+                <img src="./assets/images/0195_3dgs.png" class="before">
+                <div class="before-label">3DGS</div>
+                <img src="./assets/images/0195_random_mlp.png" class="after">
+                <div class="after-label">Random + Color Opacity Prediction</div>
+                <div class="handle"></div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="slider-container">
+                <img src="./assets/images/0262_3dgs.png" class="before">
+                <div class="before-label">3DGS</div>
+                <img src="./assets/images/0262_sfm_mlp.png" class="after">
+                <div class="after-label">SfM + Color Opacity Prediction</div>
+                <div class="handle"></div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="slider-container">
+                <img src="./assets/images/0262_3dgs.png" class="before">
+                <div class="before-label">3DGS</div>
+                <img src="./assets/images/0262_random_mlp.png" class="after">
+                <div class="after-label">Random + Color Opacity Prediction</div>
+                <div class="handle"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+  <br>
+  <br>
+  <br>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const sliderContainers = document.querySelectorAll(".slider-container");
+      sliderContainers.forEach((sliderContainer) => {
+        const beforeImage = sliderContainer.querySelector(".before");
+        const handle = sliderContainer.querySelector(".handle");
+        sliderContainer.addEventListener("mousemove", (e) => {
+          const rect = sliderContainer.getBoundingClientRect();
+          const offsetX = e.clientX - rect.left;
+          const percentage = Math.min(Math.max(offsetX / rect.width, 0), 1);
+          handle.style.left = `${percentage * 100}%`;
+          beforeImage.style.clipPath = `inset(0 ${100 - percentage * 100}% 0 0)`;
+        });
+        sliderContainer.addEventListener("touchmove", (e) => {
+          const rect = sliderContainer.getBoundingClientRect();
+          const offsetX = e.touches[0].clientX - rect.left;
+          const percentage = Math.min(Math.max(offsetX / rect.width, 0), 1);
+          handle.style.left = `${percentage * 100}%`;
+          beforeImage.style.clipPath = `inset(0 ${100 - percentage * 100}% 0 0)`;
+        });
+      });
+    });
+  </script>
+  </body>
+</html>
