@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Perception Aware 3DGS Project Page</title>
+    <link href="./css/bootstrap-4.4.1.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+      .subtitle {
+        color: grey;
+        padding: 10px 0;
+        "
+
+      }
+
+      .slider-container {
+        position: relative;
+        width: 100%;
+        height: 400px;
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        margin-bottom: 20px;
+      }
+
+      .slider-container img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .before {
+        clip-path: inset(0 50% 0 0);
+        z-index: 1;
+      }
+
+      .before-label,
+      .after-label {
+        position: absolute;
+        top: 10px;
+        padding: 5px 10px;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        font-size: 14px;
+        border-radius: 8px;
+        z-index: 3;
+      }
+
+      .before-label {
+        left: 10px;
+      }
+
+      .after-label {
+        right: 10px;
+      }
+
+      .handle {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 3px;
+        height: 100%;
+        background-color: #fff;
+        cursor: ew-resize;
+        z-index: 2;
+        box-shadow: 3px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .handle::before,
+      .handle::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 3;
+      }
+
+      .handle::before {
+        content: '\25C0';
+        left: -24px;
+        font-size: 24px;
+        color: white;
+        text-shadow: 0 0px 3px rgba(0, 0, 0, 0.8);
+      }
+
+      .handle::after {
+        content: '\25B6';
+        right: -24px;
+        font-size: 24px;
+        color: white;
+        text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.8);
+      }
+    </style>
+  </head>
+  <!-- cover -->
+  <section>
+    <div class="jumbotron text-center mt-0">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h2 class="text-center">Perception-Aware Training for 3D Gaussian Splatting</h2>
+            <h2 class="text-center">under Limited Resources</h2>
+            <hr>
+            <h6 class="text-center">
+              <a href="https://frankjc2022.github.io/">Jiepeng (Frank) Chen</a>
+            </h6>
+            <p class="text-center">University of Toronto</p>
+            <div class="row justify-content-center">
+              <div class="column">
+                <p class="mb-5">
+                  <a class="btn btn-large btn-light" href="./assets/perception_aware_3dgs.pdf" role="button" target="_blank">
+                    <i class="fa fa-file"></i> Paper </a>
+                </p>
+              </div>
+              <div class="column">
+                <p class="mb-5">
+                  <a class="btn btn-large btn-light" href="https://github.com/frankjc2022/perception-aware-3dgs" role="button" target="_blank">
+                    <i class="fa fa-github"></i> Code </a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- abstract -->
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h3>Abstract</h3>
+          <p class="text-left">
+            3D Gaussian Splatting (3DGS) enables real-time view synthesis but remains difficult to train on resource-constrained platforms such as mobile and AR/VR devices due to its high computational and memory demands. While recent work like Taming 3DGS improves training efficiency through budgeted densification, it relies on structure-based heuristics that treat all regions equally and ignore perceptual relevance. In this work, we propose a perception-aware extension that integrates lightweight cues—such as saliency, segmentation, edge, and depth maps—to guide densification toward regions more important to human viewers. We also introduce an unseen-view depth regularization strategy to improve scene consistency. Together, these contributions help allocate limited resources more effectively and enhance reconstruction quality under constrained budgets. Our method builds on prior work while advancing toward practical, perceptually guided 3DGS training for deployment on lightweight systems.
+          </p>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+  <!-- nvs -->
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center" style="padding-bottom:20px">
+          <h3>Novel View Synthesis</h3>
+        </div>
+
+        <div class="col-md-6 text-center">
+          <video width="100%" playsinline autoplay loop preload muted>
+            <source src="./assets/videos/bonsai_3dgs.mp4" type="video/mp4">
+          </video>
+          <h6 class="subtitle">3DGS (1.24M Gaussians)</h6>
+        </div>
+
+        <div class="col-md-6 text-center">
+          <video width="100%" playsinline autoplay loop preload muted>
+            <source src="./assets/videos/bonsai_ours.mp4" type="video/mp4">
+          </video>
+          <h6 class="subtitle">Ours (0.41M Gaussians)</h6>
+        </div>
+
+        <div class="col-md-6 text-center">
+          <video width="100%" playsinline autoplay loop preload muted>
+            <source src="./assets/videos/counter_3dgs.mp4" type="video/mp4">
+          </video>
+          <h6 class="subtitle">3DGS (1.22M Gaussians)</h6>
+        </div>
+
+        <div class="col-md-6 text-center">
+          <video width="100%" playsinline autoplay loop preload muted>
+            <source src="./assets/videos/counter_ours.mp4" type="video/mp4">
+          </video>
+          <h6 class="subtitle">Ours (0.31M Gaussians)</h6>
+        </div>
+
+        <div class="col-12">
+          <hr>
+        </div>
+      </div>
+      <!-- method -->
+      <div class="row">
+        <div class="col-12 text-center">
+          <h3>Method</h3>
+          <img src="./assets/images/architecture.jpg" width="1080" alt="">
+          <p class="text-left" style="padding-top: 30px;">
+            Overview of the proposed training pipeline. For each input view, we precompute four lightweight perceptual cues: saliency, segmentation, edge, and depth maps. The 3D Gaussians are projected onto these maps to compute importance scores for densification. The final score is a weighted combination of perception-aware signals and the structural score from Taming 3DGS, and is used to guide weighted sampling under a pre-defined Gaussian budget. Additionally, we introduce an unseen-view depth regularization loss, computed from depth maps rendered at novel viewpoints, to improve geometric consistency across the scene.
+          </p>
+          <p>&nbsp;</p>
+          <hr>
+        </div>
+      </div>
+      <!-- results -->
+      <div class="row">
+        <div class="col-12 text-center">
+          <h3>Results</h3>
+          <h6 class="subtitle">Unseen Views</h6>
+          <div class="row justify-content-center">
+            <div class="col-md-6">
+              <div class="slider-container">
+                <img src="./assets/images/bike_3dgs.png" class="before">
+                <div class="before-label">3DGS</div>
+                <img src="./assets/images/bike_ours.png" class="after">
+                <div class="after-label">Ours</div>
+                <div class="handle"></div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="slider-container">
+                <img src="./assets/images/bike_taming.png" class="before">
+                <div class="before-label">Taming 3DGS</div>
+                <img src="./assets/images/bike_ours.png" class="after">
+                <div class="after-label">Ours</div>
+                <div class="handle"></div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="slider-container">
+                <img src="./assets/images/bonsai_3dgs.png" class="before">
+                <div class="before-label">3DGS</div>
+                <img src="./assets/images/bonsai_ours.png" class="after">
+                <div class="after-label">Ours</div>
+                <div class="handle"></div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="slider-container">
+                <img src="./assets/images/bonsai_taming.png" class="before">
+                <div class="before-label">Taming 3DGS</div>
+                <img src="./assets/images/bonsai_ours.png" class="after">
+                <div class="after-label">Ours</div>
+                <div class="handle"></div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="slider-container">
+                <img src="./assets/images/dr_3dgs.png" class="before">
+                <div class="before-label">3DGS</div>
+                <img src="./assets/images/dr_ours.png" class="after">
+                <div class="after-label">Ours</div>
+                <div class="handle"></div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="slider-container">
+                <img src="./assets/images/dr_taming.png" class="before">
+                <div class="before-label">Taming 3DGS</div>
+                <img src="./assets/images/dr_ours.png" class="after">
+                <div class="after-label">Ours</div>
+                <div class="handle"></div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="slider-container">
+                <img src="./assets/images/room_3dgs.png" class="before">
+                <div class="before-label">3DGS</div>
+                <img src="./assets/images/room_ours.png" class="after">
+                <div class="after-label">Ours</div>
+                <div class="handle"></div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="slider-container">
+                <img src="./assets/images/room_taming.png" class="before">
+                <div class="before-label">Taming 3DGS</div>
+                <img src="./assets/images/room_ours.png" class="after">
+                <div class="after-label">Ours</div>
+                <div class="handle"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+  <br>
+  <br>
+  <br>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const sliderContainers = document.querySelectorAll(".slider-container");
+      sliderContainers.forEach((sliderContainer) => {
+        const beforeImage = sliderContainer.querySelector(".before");
+        const handle = sliderContainer.querySelector(".handle");
+        sliderContainer.addEventListener("mousemove", (e) => {
+          const rect = sliderContainer.getBoundingClientRect();
+          const offsetX = e.clientX - rect.left;
+          const percentage = Math.min(Math.max(offsetX / rect.width, 0), 1);
+          handle.style.left = `${percentage * 100}%`;
+          beforeImage.style.clipPath = `inset(0 ${100 - percentage * 100}% 0 0)`;
+        });
+        sliderContainer.addEventListener("touchmove", (e) => {
+          const rect = sliderContainer.getBoundingClientRect();
+          const offsetX = e.touches[0].clientX - rect.left;
+          const percentage = Math.min(Math.max(offsetX / rect.width, 0), 1);
+          handle.style.left = `${percentage * 100}%`;
+          beforeImage.style.clipPath = `inset(0 ${100 - percentage * 100}% 0 0)`;
+        });
+      });
+    });
+  </script>
+  </body>
+</html>
